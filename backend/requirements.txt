@@ -1,0 +1,33 @@
+# LLM
+langchain
+langchain-community
+langchain-groq
+langchain-core
+
+# Vector DB
+qdrant-client
+
+# Embeddings + Reranking
+sentence-transformers
+
+# Hybrid search (BM25)
+rank-bm25
+
+# Graph RAG
+networkx
+
+# Document processing
+pypdf
+python-docx
+
+# Web search (CRAG / Agentic RAG fallback)
+tavily-python
+
+# Web framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Utils
+python-dotenv
+pydantic

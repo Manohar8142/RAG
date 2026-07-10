@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+*.egg-info/
+
+# Environment variables (NEVER commit these)
+.env
+backend/.env
+
+# Backend runtime data
+backend/uploads/
+backend/qdrant_local/
+backend/chroma_db/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Next.js internal
+frontend/.git/
+frontend/AGENTS.md
+frontend/CLAUDE.md
