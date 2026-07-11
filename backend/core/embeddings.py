@@ -24,6 +24,7 @@ from sentence_transformers import SentenceTransformer
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 _embedding_model: HuggingFaceEmbeddings = None
+_sentence_transformer: SentenceTransformer = None
 
 
 def get_embedding_model(model_name: str = "all-MiniLM-L6-v2") -> HuggingFaceEmbeddings:
@@ -38,5 +39,7 @@ def get_embedding_model(model_name: str = "all-MiniLM-L6-v2") -> HuggingFaceEmbe
 
 
 def embed_text(text: str, model_name: str = "all-MiniLM-L6-v2") -> list[float]:
-    model = SentenceTransformer(model_name)
-    return model.encode(text, normalize_embeddings=True).tolist()
+    global _sentence_transformer
+    if _sentence_transformer is None:
+        _sentence_transformer = SentenceTransformer(model_name)
+    return _sentence_transformer.encode(text, normalize_embeddings=True).tolist()
