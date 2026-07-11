@@ -4,6 +4,7 @@ langchain-community
 langchain-groq
 langchain-core
 langchain-text-splitters
+langgraph
 
 # Vector DB
 qdrant-client

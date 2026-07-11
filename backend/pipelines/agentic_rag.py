@@ -55,8 +55,8 @@ from dotenv import load_dotenv
 
 from langchain_groq import ChatGroq
 from langchain_core.documents import Document
-from langchain.agents import initialize_agent, AgentType
 from langchain_core.tools import Tool
+from langgraph.prebuilt import create_react_agent
 
 from core.embeddings import get_embedding_model, embed_text
 from core.vector_store import get_qdrant_client, upsert_documents, similarity_search
@@ -189,21 +189,18 @@ class AgenticRAG(BaseRAG):
 
         tools = self._build_tools(step_recorder)
 
-        agent = initialize_agent(
-            tools=tools,
-            llm=self.llm,
-            agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-            verbose=False,
-            max_iterations=5,
-            handle_parsing_errors=True,
-        )
+        agent = create_react_agent(self.llm, tools)
 
         try:
             trace.append(TraceStep(
                 step="Reasoning Loop",
                 detail="Agent deciding which tools to use and in what order",
             ))
-            answer = agent.run(question)
+            result = agent.invoke(
+                {"messages": [("user", question)]},
+                config={"recursion_limit": 15},
+            )
+            answer = result["messages"][-1].content
         except Exception as e:
             answer = f"Agent encountered an error: {e}. Please try rephrasing."
 
