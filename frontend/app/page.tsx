@@ -80,8 +80,10 @@ export default function Home() {
     setQuerying(true);
     setResponse(null);
     setExpandedTrace(null);
+    const submittedQuestion = question.trim();
+    setQuestion("");
     try {
-      const res = await queryRAG(selected.slug, question.trim());
+      const res = await queryRAG(selected.slug, submittedQuestion);
       setResponse(res);
     } catch (err: unknown) {
       setResponse({
@@ -90,7 +92,7 @@ export default function Home() {
         trace: [],
         rag_type: selected.slug,
         latency_ms: 0,
-        question: question,
+        question: submittedQuestion,
       });
     } finally {
       setQuerying(false);

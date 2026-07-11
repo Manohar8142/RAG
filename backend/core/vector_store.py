@@ -104,9 +104,9 @@ def similarity_search(
             must=[FieldCondition(key="source", match=MatchValue(value=filter_source))]
         )
 
-    results = client.search(
+    response = client.query_points(
         collection_name=collection_name,
-        query_vector=query_vector,
+        query=query_vector,
         limit=k,
         query_filter=query_filter,
         with_payload=True,
@@ -117,7 +117,7 @@ def similarity_search(
             page_content=r.payload["text"],
             metadata={k: v for k, v in r.payload.items() if k != "text"},
         )
-        for r in results
+        for r in response.points
     ]
 
 
