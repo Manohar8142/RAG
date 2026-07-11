@@ -54,9 +54,9 @@ from typing import List
 from dotenv import load_dotenv
 
 from langchain_groq import ChatGroq
-from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain.agents import initialize_agent, AgentType
-from langchain.tools import Tool
+from langchain_core.tools import Tool
 
 from core.embeddings import get_embedding_model, embed_text
 from core.vector_store import get_qdrant_client, upsert_documents, similarity_search

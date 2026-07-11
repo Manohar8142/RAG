@@ -58,7 +58,7 @@ from typing import List, Optional
 from dotenv import load_dotenv
 
 from langchain_groq import ChatGroq
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 from core.document_loader import load_file, load_text_strings
 from pipelines.base import BaseRAG, QueryResult, RAGInfo, TraceStep

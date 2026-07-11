@@ -55,7 +55,7 @@ from dotenv import load_dotenv
 
 import networkx as nx
 from langchain_groq import ChatGroq
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 from core.embeddings import get_embedding_model, embed_text
 from core.vector_store import get_qdrant_client, upsert_documents, similarity_search

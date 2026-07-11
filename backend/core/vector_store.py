@@ -37,7 +37,7 @@ from qdrant_client.models import (
     FieldCondition,
     MatchValue,
 )
-from langchain.schema import Document
+from langchain_core.documents import Document
 import uuid
 
 

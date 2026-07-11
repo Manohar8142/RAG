@@ -29,8 +29,8 @@ from its neighbors to be understood on its own.
 from pathlib import Path
 from typing import List
 
-from langchain.schema import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader, PyPDFLoader, Docx2txtLoader
 
 SUPPORTED = {".txt": TextLoader, ".pdf": PyPDFLoader, ".docx": Docx2txtLoader}
